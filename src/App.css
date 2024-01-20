@@ -1,42 +1,41 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+
+
+.PinnedContainer{
+    display: grid;
+    grid-template-rows: repeat(4, 100px);
+    grid-template-rows: minmax(100px, auto);
+    grid-auto-flow: row;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.expandProject{
+    grid-row: span 2;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+input[types="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
+
+.microTasks::-webkit-scrollbar{ 
+    width: 7px;
+    height: 7px;
+    padding: 10px;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .microTasks::-webkit-scrollbar-thumb{
+    background-color: black;
+    border-radius: 10px;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .microTasks::-webkit-scrollbar-track{
+    background-color: black;
+    width: 7px;
+    background-color: gainsboro;
+    padding: 10px;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
+  
