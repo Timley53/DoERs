@@ -5,18 +5,20 @@ import { IoAddOutline } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 import PinnedContainer from "./PinnedContainer"
 import DeadlineContainer from "./DeadlineContainer"
-import Pagination from '../../components/Pagination';
+import { useSelector } from 'react-redux';
+import { Roostate } from '../../Store/GlobalStore';
 
-const arr = new Array(9).fill(9)
-console.log(arr)
+
 
 function PinnedTask() {
 
   const [showPin, setShowPin] = useState<boolean>(false)
   const [currentPage, setCurrentPage] = useState<number>(1)
+  const projects = useSelector((state: Roostate) => state.user.Projects)
+
 
   const dataPerPage = 8;
-  const pages = Math.ceil(arr ? arr.length/ dataPerPage : 0)
+  const pages = Math.ceil(projects ? projects.length/ dataPerPage : 0)
 
   const start = (currentPage - 1) * dataPerPage
   const end = currentPage * dataPerPage
@@ -41,7 +43,7 @@ function PinnedTask() {
 
 
     {
-      !showPin && <PinnedContainer setCurrentPage={setCurrentPage} pages={pages} currentPage={currentPage} arr={arr} start={start} end={end}/> || showPin && <DeadlineContainer/>
+      !showPin && <PinnedContainer setCurrentPage={setCurrentPage} pages={pages} currentPage={currentPage}  start={start} end={end}/> || showPin && <DeadlineContainer/>
     }
 
   
