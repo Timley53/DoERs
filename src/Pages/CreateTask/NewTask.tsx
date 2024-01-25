@@ -11,7 +11,7 @@ function NewTask() {
   const [title, setTitle] = useState<string >("")
   const [priority, setPriority] = useState<string | null>("")
   const [notes, setNotes] = useState<string>("")
-  const [showNotes, setShowNotes] = useState<boolean>(false)
+  // const [showNotes, setShowNotes] = useState<boolean>(false)
   const [deadline, setDeadline] = useState<string >("")
   const {setShowModal, setModalDetails} = useContext(GlobalContext)
   const dispatch = useDispatch()

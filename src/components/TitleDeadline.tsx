@@ -1,5 +1,4 @@
-import React from 'react'
-import { dateTypes } from '../Interface'
+
 import {differenceInDays} from "date-fns"
 
 interface Prop{

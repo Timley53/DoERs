@@ -1,11 +1,8 @@
-import React, { useState } from 'react'
 import { MdOutlinePendingActions } from "react-icons/md";
 import { MdDone } from "react-icons/md";
 import { microTasks } from '../Interface';
-import { BsStar } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
 import { completedMicro } from '../Store/userSlice';
-import { GoStar } from 'react-icons/go';
 import { FaStar } from 'react-icons/fa';
 
 interface Props{

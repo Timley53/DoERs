@@ -1,4 +1,3 @@
-import React from 'react'
 import { BsFillPinAngleFill } from 'react-icons/bs'
 import { MdDelete } from 'react-icons/md'
 
