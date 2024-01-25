@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
+import  { useContext } from 'react'
 import { GlobalContext } from '../../Utils'
 
 function CreateModal() {
-    const {showModal, setShowModal, modalDetails, setModalDetails} = useContext(GlobalContext)
+    const { setShowModal, modalDetails, setModalDetails} = useContext(GlobalContext)
   return (
     <div className='w-screen h-screen bg-black fixed bg-opacity-60 top-0 left-0 backdrop-blur-md flex items-center justify-center transition-all duration-300 z-50'>
         

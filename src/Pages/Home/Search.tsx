@@ -1,6 +1,5 @@
 import React from 'react'
-import { ImSearch } from "react-icons/im";
-import { RxCross2 } from "react-icons/rx";
+
 
 interface props {
     searchValue: string;

@@ -1,22 +1,18 @@
-import React, { useContext, useState } from 'react'
-import { BsFillPinAngleFill } from "react-icons/bs";
-import { MdDelete } from "react-icons/md";
-import MicroTasks from './MicroTasks';
-import { GrExpand } from "react-icons/gr";
-import { FaEdit } from "react-icons/fa";
+import  {  useState } from 'react'
+
 import ProjectNote from './ProjectNote';
 import ProjectTime from './ProjectTime';
 import TaskHead from './TaskHead';
 import TitleDeadline from './TitleDeadline';
 import Expandbutton from './Expandbutton';
-import { ProjectTypes, TaskType } from '../Interface';
+import { ProjectTypes } from '../Interface';
 
-function ProjectArticle({projectId,title, note,deadline, createdAt,status, microTasks, onhold, pinned }: ProjectTypes) {
-  const [expand, setExpand] = useState<boolean>(false)
+function ProjectArticle({projectId,title,deadline, createdAt, microTasks }: ProjectTypes) {
+  const [expand] = useState<boolean>(false)
 
-  const props = {
-    projectId,title, note,deadline, createdAt,status, microTasks, onhold, pinned
-  }
+  // const props = {
+  //   projectId,title, note,deadline, createdAt,status, microTasks, onhold, pinned
+  // }
 
   console.log(createdAt)
 

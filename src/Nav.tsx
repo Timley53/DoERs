@@ -1,11 +1,8 @@
-import React, { useState } from 'react'
-import { Link, Router, useNavigate } from 'react-router-dom'
-import { MdPendingActions } from "react-icons/md";
-import { CgOptions } from "react-icons/cg";
+import  { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import { GoProject } from "react-icons/go";
 import { GrProjects, GrTask } from "react-icons/gr";
-import { LuClipboardCheck, LuTarget } from "react-icons/lu";
 import { SlOptions } from "react-icons/sl";
 import { MdLightMode, MdDarkMode } from "react-icons/md";
 import { RiExpandRightFill } from "react-icons/ri";
@@ -49,21 +46,21 @@ function Nav() {
 
     const [light, setLight] = useState<boolean>(false)
     const [expand, setExpand] = useState<boolean>(false)
-    const [path, setPath] = useState<string>("dashboard")
+    const [, setPath] = useState<string>("dashboard")
 
     const route = window.location.pathname.split("/").length - 1
 
-    function currentPath(cur: string){
+    // function currentPath(cur: string){
 
-        if( window.location.pathname.split("/")[route] === cur){
-             return "bg-slate-400 text-white" 
-            } else{
-                return ""
-            }
+    //     if( window.location.pathname.split("/")[route] === cur){
+    //          return "bg-slate-400 text-white" 
+    //         } else{
+    //             return ""
+    //         }
 
            
             
-    }
+    // }
     
 
     
@@ -82,7 +79,7 @@ function Nav() {
                 
                 return(
                     <li className="" key={li.link}>
-                        <Link to={li.link} className={`flex text-center flex-col items-center p-1 px-2  $ ${window.location.pathname.split("/")[route] === li.link ? "bg-slate-400 text-white" : ''}`}>
+                        <Link onClick={()=> setExpand(!expand)}  to={li.link} className={`flex text-center flex-col items-center p-1 px-2  $ ${window.location.pathname.split("/")[route] === li.link ? "bg-slate-400 text-white" : ''}`}>
                             <span className='text-2xl'>{li.icon}</span>
                             <span className='mt-1 text-xs'>{li.text}</span>
                         </Link>

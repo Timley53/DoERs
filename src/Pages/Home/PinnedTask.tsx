@@ -1,10 +1,8 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import { MdPushPin } from "react-icons/md";
-import { MdTimer } from "react-icons/md";
 import { IoAddOutline } from "react-icons/io5";
 import { Link } from 'react-router-dom';
-import PinnedContainer from "./PinnedProject"
-import DeadlineContainer from "./PinnedSingleTasks"
+
 import { useSelector } from 'react-redux';
 import { Roostate } from '../../Store/GlobalStore';
 import PinnedProject from './PinnedProject';

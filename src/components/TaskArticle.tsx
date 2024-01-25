@@ -1,11 +1,9 @@
-import React from 'react'
 import TaskHead from './TaskHead'
-import TitleDeadline from './TitleDeadline'
 import ProjectTime from './ProjectTime'
 import { TaskType } from '../Interface'
 import { differenceInDays } from 'date-fns'
 
-function TaskArticle({taskId, title, notes ,deadline,completed,createdAt, priority }: TaskType) {
+function TaskArticle({ title ,deadline,createdAt,  }: TaskType) {
 
   const daysLeft = differenceInDays(new Date(),  new Date(deadline) ) 
 
