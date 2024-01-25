@@ -15,16 +15,21 @@ interface Props{
    React.Dispatch<React.SetStateAction<number>>;
 }
 
-function PinnedContainer({start, end, pages, currentPage, setCurrentPage} : Props) {
+function PinnedProject({start, end, pages, currentPage, setCurrentPage} : Props) {
   const projects = useSelector((state: Roostate) => state.user.Projects)
+
+
 
 
   return (
     <div className="w-full min-h-[400px]">
 
     <div className=' w-full  flex flex-wrap mt-2 items-center  h-full '>
-      {
-        projects?.slice(start, end).map((Proj: ProjectTypes) =>  (<ProjectArticle key={Proj.projectId} {...Proj}/>) )
+      { 
+  projects.length < 1 && <div className='w-full h-[350px]  flex items-center justify-center'>
+    No Pinned Projects
+  </div> ||
+      projects.length > 0 && projects?.slice(start, end).map((Proj: ProjectTypes) =>  (<ProjectArticle key={Proj.projectId} {...Proj}/>) ) 
       }   
       </div>
 
@@ -34,4 +39,4 @@ function PinnedContainer({start, end, pages, currentPage, setCurrentPage} : Prop
   )
 }
 
-export default PinnedContainer
+export default PinnedProject

@@ -7,6 +7,10 @@ export const GlobalContext = createContext<GlobalContextType>({
     setHomeProjectModal: ()=> {},
     modalDetails: null,
     setModalDetails: ()=> {},
-
-
+    showModal: false,
+    setShowModal:  ()=> {},
+    projectModalDetails: null,
+    setProjectModalDetails: ()=> {},
+    setProjectModalId: ()=> {},
+    projectModalId: "",
 })

@@ -11,12 +11,9 @@ type Props = microTasks &  {
     setTaskList: React.Dispatch<React.SetStateAction<microTasks[]>>;
 }
 
-type starCheckType = ( tasks: microTasks[]) => boolean;
+type starCheckType = (tasks: microTasks[]) => boolean;
 
 function NewMicroTasks({microId, title, star, taskList, setTaskList} : Props) {
-    // const [edit, setEdit] = useState<boolean>(false)
-
-
     const {setModalDetails,setShowModal } = useContext(GlobalContext)
 
         const checkIfStar: starCheckType = (tasks :  microTasks[]) => {

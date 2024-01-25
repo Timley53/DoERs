@@ -12,6 +12,7 @@ import Status from './Pages/Status/Status'
 import Goals from './Pages/Goals/Goals'
 import Option from './Pages/Option/Option'
 import CreateTask from './Pages/CreateTask/CreateTask'
+import Task from './Pages/Tasks/Task'
 
 
 const router = createBrowserRouter(createRoutesFromElements(
@@ -22,7 +23,9 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path='dashboard' element={<AppLayout/>}>
 
       <Route index element={<Home/>}/>
+
       <Route path='createtask' element={<CreateTask/>}/>
+      <Route path='task' element={<Task/>}/>
       <Route path='pending' element={<Pending/>}/>
       <Route path='completed' element={<Completed/>}/>
       <Route path='projects' element={<Project/>}/>

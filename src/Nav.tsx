@@ -4,11 +4,12 @@ import { MdPendingActions } from "react-icons/md";
 import { CgOptions } from "react-icons/cg";
 
 import { GoProject } from "react-icons/go";
-import { GrProjects } from "react-icons/gr";
+import { GrProjects, GrTask } from "react-icons/gr";
 import { LuClipboardCheck, LuTarget } from "react-icons/lu";
 import { SlOptions } from "react-icons/sl";
 import { MdLightMode, MdDarkMode } from "react-icons/md";
 import { RiExpandRightFill } from "react-icons/ri";
+import { NavLinkObjTypeS } from './Interface';
 
 // const navStyles = {
 //     link: ''
@@ -21,16 +22,10 @@ const mainLinks: NavLinkObjTypeS[] = [
         text: "Dashboard",
         icon: (<GrProjects />),
     },
-    {
-        link: "pending",
-        text: "Pending",
-        icon: (<MdPendingActions/>),
-    }
-    ,
-    {
-        link: "completed",
-        text: "Completed",
-        icon: (<LuClipboardCheck/>),
+        { 
+            link: "task",
+        text: "Tasks",
+        icon: (<GrTask />),
     }
     ,
     {
@@ -41,17 +36,6 @@ const mainLinks: NavLinkObjTypeS[] = [
 ]
 
 const otherLinks = [
-    { 
-        link: "status",
-    text: "Status",
-    icon: (<CgOptions/>),
-},
-{
-    link: "goals",
-    text: "Goals",
-    icon: (<LuTarget />),
-}
-,
 {
     link: "option",
     text: "Option",
@@ -87,7 +71,30 @@ function Nav() {
     console.log(window.location.pathname.split("/")[route])
 
   return (
-    <nav className={`flex flex-col items-center  ${ expand ? " w-[170px]" : "w-[80px]  justify-center"} sticky transition-all duration-1000 h-[100vh] p-1 pt-4 bg-[aliceblue] z-10`}>
+
+    <>
+
+    <nav className='md:hidden sm:flex fixed bottom-0 w-full border-2'>
+        <ul className='flex justify-between w-full px-2 list-none'>
+
+        {
+            [...mainLinks, ...otherLinks].map((li: NavLinkObjTypeS) => {
+                
+                return(
+                    <li className="" key={li.link}>
+                        <Link to={li.link} className={`flex text-center flex-col items-center p-1 px-2  $ ${window.location.pathname.split("/")[route] === li.link ? "bg-slate-400 text-white" : ''}`}>
+                            <span className='text-2xl'>{li.icon}</span>
+                            <span className='mt-1 text-xs'>{li.text}</span>
+                        </Link>
+
+                    </li>
+                )
+            })
+        }
+        </ul>
+    </nav>
+
+    <nav className={`flex sm:hidden md:flex flex-col items-center  ${ expand ? " w-[170px]" : "w-[80px]  "} sticky transition-all duration-1000 h-[100vh] p-1 pt-4 bg-[aliceblue] z-10`}>
     <Link to={"./"} >
         Doers
     </Link>
@@ -95,7 +102,7 @@ function Nav() {
 
     
 
-    <ul className={`w-[100%] ${!expand ? "flex  flex-col items-center" : ""}   mt-3 list-none p-1   rounded-2xl  py-2`}>
+    <ul className={`w-[100%] ${!expand ? "flex  flex-col items-center" : ""}   mt-8 list-none p-1   rounded-2xl  py-2`}>
     <button className='mt-3 text-2xl mx-auto' onClick={()=> setExpand(!expand)}>
         <RiExpandRightFill/>
     </button>
@@ -142,7 +149,7 @@ function Nav() {
 
                 return(
                     <li className='' key={li.link}>
-                        <Link onClick={()=> setPath(li.link)} className={` p-2 mt-4 
+                        <Link onClick={()=> setPath(li.link)} className={` p-2  
                         text-[.9rem]
                         hover:bg-slate-400 hover:text-white
                         rounded-md transition-all  flex items-center $ ${ window.location.pathname.split("/")[route] === li.link ? "bg-slate-400 text-white" : '' }
@@ -174,7 +181,10 @@ function Nav() {
         <button className={`w-[50%] transition-all duration-2000 p-2 px-3 text-center ${!light ? "bg-black text-white": "bg-transparent"} rounded-xl `} onClick={()=>setLight(false)}><MdDarkMode/>
         </button>
     </article>
-</nav>  )
+</nav>
+
+</>
+  )
 }
 
 export default Nav

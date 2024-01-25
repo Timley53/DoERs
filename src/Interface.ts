@@ -2,11 +2,14 @@
 export interface GlobalContextType{
     HomeProjectModal: boolean;
     setHomeProjectModal:React.Dispatch<React.SetStateAction<boolean>> |( ()=> {}); 
-    modalDetails: CreateModalType
-    , setModalDetails:  React.Dispatch<React.SetStateAction<CreateModalType>> | ( ()=> {});
+    modalDetails: CreateModalType  | null
+    , setModalDetails:  React.Dispatch<React.SetStateAction<CreateModalType | null>> | ( ()=> {});
     showModal: boolean;
     setShowModal:  React.Dispatch<React.SetStateAction<boolean>>;
-  
+    projectModalDetails: ProjectTypes | null,
+     setProjectModalDetails: React.Dispatch<React.SetStateAction<ProjectTypes | null>>;
+     projectModalId: string, 
+     setProjectModalId:  React.Dispatch<React.SetStateAction<string>>;
 
 }
 
@@ -32,18 +35,21 @@ export interface microTasks{
     microId: string;
     title: string;
     star: boolean;
+    completed: boolean;
 }
 
 export interface ProjectTypes{
     projectId: string,
     createdAt: string,
-    deadline: dateTypes,
+    deadline: string,
     title: string;
     status: string,
     onhold: boolean,
     note: string;
-    microTasks: microTasks[]
-    // tasks: 
+    microTasks: microTasks[];
+    pinned: boolean;
+    type: string
+
 }
 
 export interface TaskType{
@@ -51,9 +57,10 @@ export interface TaskType{
     title: string,
     completed: boolean;
     notes: string;
-    deadline: dateTypes;
-    onhold: boolean; 
+    deadline: string;
     createdAt: string;
+    priority: string
+    type: string
 }
 export interface GoalsTypes {
 
@@ -67,4 +74,5 @@ export interface userInitialStateTypes{
 }
 export interface CreateModalType {
   message: string
+
 }

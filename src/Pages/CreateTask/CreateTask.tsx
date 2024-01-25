@@ -20,8 +20,9 @@ function CreateTask() {
 
 
       <div className="tab w-[80%] flex justify-around my-2 p-2">
-        <button className=' bg-opacity-85 p-2 rounded-md hover:bg-slate-300 transition-all w-[50%]' onClick={()=> setSetTask(true)}>New Task</button>
-        <button className=' bg-opacity-85 p-2 rounded-md hover:bg-slate-300 transition-all w-[50%]' onClick={()=>setSetTask(false)}>New Project</button>
+
+        <button className={`bg-opacity-85 p-2 rounded-md hover:bg-slate-300 transition-all w-[50%] ${newTask ? "bg-slate-500" : ""}`} onClick={()=> setSetTask(true)}>New Task</button>
+        <button className={`bg-opacity-85 p-2 rounded-md hover:bg-slate-300 transition-all w-[50%] ${!newTask ? "bg-slate-500" : ""}`} onClick={()=>setSetTask(false)}>New Project</button>
       </div>
 
       <div className="wrapper w-full flex items-center flex-col">

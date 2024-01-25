@@ -12,12 +12,12 @@ import { AppsDispatch } from '../../Store/GlobalStore'
 import { createNewProject } from '../../Store/userSlice'
 import Deadline from './Deadline'
 
+
 function NewProject() {
     const {setShowModal, setModalDetails} = useContext(GlobalContext)
     const dispatch = useDispatch()
-    
 
-    const [taskList, setTaskList] = useState<microTasks[]>([
+    const defaultMicroTask = [
         {
             microId: `micro/${generateUniqueId({
                 length: 8,
@@ -25,7 +25,8 @@ function NewProject() {
                 useNumbers: true,
             })}`,
             title: "",
-            star: false
+            star: false,
+            completed: false,
         }, 
         {
             microId: `micro/${generateUniqueId({
@@ -34,9 +35,13 @@ function NewProject() {
                 useNumbers: true,
             })}`,
             title: "",
-            star: false
+            star: false,
+            completed: false,
         },   
-    ])
+    ]
+    
+
+    const [taskList, setTaskList] = useState<microTasks[]>(defaultMicroTask)
 
     const [notes, setNotes] = useState<string>("")
     const [showNotes, setShowNotes] = useState<boolean>(false)
@@ -47,6 +52,14 @@ function NewProject() {
     // console.log(deadline);
     // console.log(new Date(deadline));
     
+    const clearForm = () => {
+        setNotes("")
+        setShowNotes(false)
+        setDeadline("")
+        setTitle("")
+        setTaskList(defaultMicroTask)
+
+    }
 
 
     const newProjectSubmit = (e : React.FormEvent)  => {
@@ -59,16 +72,15 @@ function NewProject() {
             useLetters: true,
             useNumbers: true,
         })}`,
-        createdAt: `${new Date(deadline)}`,
-        deadline: {
-            dateObj: new Date(deadline),
-            text: deadline
-        },
+        createdAt:new Date().toDateString(),
+        deadline: deadline,
         title: title,
         status: "active",
         onhold: false,
         note: notes,
-        microTasks: [...taskList]
+        microTasks: [...taskList],
+        pinned: false,
+        type: "Project"
     }
 
         dispatch<AppsDispatch | any>(createNewProject({...newPjDetails}))
@@ -76,6 +88,8 @@ function NewProject() {
             message: "Project Created"
          })
          setShowModal(true)
+
+         clearForm()
     }
     // const 
 
@@ -92,10 +106,10 @@ function NewProject() {
             {
                taskList.length > 0 && taskList.map((micro: microTasks) => {
 
-                    const {microId, title, star } = micro
+                    const {microId, title, star, completed } = micro
 
                     return (
-                        <NewMicroTasks key={micro.microId}   
+                        <NewMicroTasks completed={completed} key={micro.microId}   
                         microId={microId} title={title} star={star} taskList={taskList}  setTaskList={setTaskList}
                         />
                     )
@@ -126,7 +140,8 @@ function NewProject() {
                     useNumbers: true,
                 })}`,
                 title: "",
-                star: false
+                star: false,
+                completed: false
             },   
         ])}>
            <GrAdd className="mr-3"/>  Add new
