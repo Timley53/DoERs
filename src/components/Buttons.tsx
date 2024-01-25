@@ -9,7 +9,7 @@ interface HomeGoalsBtnProps {
 
 
 
-export const HomeGoalsBtn = ({setShowGoalsStatus,showGoalsStatus } : HomeGoalsBtnProps) => {
+export const HomeGoalsBtn = ({setShowGoalsStatus } : HomeGoalsBtnProps) => {
 
     return(
         <button className="p-1 text-sm bg-slate-500 hover:bg-slate-200 text-white rounded-md transition-all" onClick={()=> setShowGoalsStatus(true)}>

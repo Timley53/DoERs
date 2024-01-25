@@ -1,5 +1,4 @@
 import React from 'react'
-import { microTasks } from '../Interface'
 
 interface Props {
     notes: string,

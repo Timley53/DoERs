@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { GoStar } from "react-icons/go";
 import { MdDelete } from "react-icons/md";
 import { microTasks } from '../Interface';

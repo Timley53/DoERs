@@ -1,5 +1,5 @@
 
-import React, {useState} from 'react' 
+import React from 'react' 
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 export interface PaginationType {

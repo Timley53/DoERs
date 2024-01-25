@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 function ProjectNote() {
-        const [notes, setNotes] = useState<string>("Theba,sm")
+        const [notes, setNotes] = useState<string>("")
         
 
   return (

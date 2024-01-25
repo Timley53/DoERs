@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import  { useContext } from 'react'
 import TaskHead from '../../components/TaskHead'
 import TitleDeadline from '../../components/TitleDeadline'
 import ProjectTime from '../../components/ProjectTime'
@@ -6,14 +6,12 @@ import ProjectNote from '../../components/ProjectNote'
 import MicroTasks from '../../components/MicroTasks'
 import { ImCross } from 'react-icons/im'
 import { GlobalContext } from '../../Utils'
-import Deadline from '../CreateTask/Deadline'
 import { microTasks } from '../../Interface'
 import { useSelector } from 'react-redux'
 import { Roostate } from '../../Store/GlobalStore'
-import { FaStar } from 'react-icons/fa'
 
 function ProjectModal() {
-    const { setHomeProjectModal, projectModalDetails, projectModalId} = useContext(GlobalContext)
+    const { setHomeProjectModal, projectModalId} = useContext(GlobalContext)
     const modalDetails = useSelector((state:Roostate) =>state.user.Projects.find(pj => pj.projectId === projectModalId))
 
     console.log(modalDetails)

@@ -1,7 +1,6 @@
-import React, { useContext } from 'react'
+import  { useContext } from 'react'
 import { GrExpand } from 'react-icons/gr';
 import { GlobalContext } from '../Utils';
-import { ProjectTypes } from '../Interface';
 
 interface Props{ 
   projectId: string

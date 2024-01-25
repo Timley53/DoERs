@@ -7,7 +7,7 @@ interface props {
      setShowGoalsStatus:  React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function HomeGoalsStatus({setShowGoalsStatus, showGoalsStatus} : props) {
+export default function HomeGoalsStatus({setShowGoalsStatus} : props) {
   return (
     <div className='h-screen w-screen z-50 bg-black bg-opacity-80 flex fixed justify-end top-0 left-0'>
 

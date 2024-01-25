@@ -17,19 +17,19 @@ function NewTask() {
   const dispatch = useDispatch()
 
 
-  let current;
+  // let current;
 
-  if(priority === "Normal"){
-    current = "600"
-  } else if(priority === "Midly urgent"){
-    current = "600"
-  } else if(priority === "Urgent"){
+  // if(priority === "Normal"){
+  //   current = "600"
+  // } else if(priority === "Midly urgent"){
+  //   current = "600"
+  // } else if(priority === "Urgent"){
     
-    current = "600"
-  } else{
+  //   current = "600"
+  // } else{
     
-    current = "300"
-  }
+  //   current = "300"
+  // }
 
   const creatingNewTask = (e: React.FormEvent ) => {
 
