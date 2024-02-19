@@ -1,6 +1,5 @@
-import  { useContext, useState } from 'react'
-import { DarkModeBtn, HomeGoalsBtn } from '../../components/Buttons'
-import HomeGoalsStatus from './HomeGoalsStatus'
+import  { useContext } from 'react'
+import { DarkModeBtn } from '../../components/Buttons'
 import PinnedTask from './PinnedTask'
 import { GlobalContext } from '../../Utils'
 import ProjectModal from './ProjectModal'

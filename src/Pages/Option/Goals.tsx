@@ -1,7 +1,5 @@
-import React from 'react'
 import GoalsArticle from './GoalsArticle'
 import { useSelector } from 'react-redux'
-import { RootState } from '@reduxjs/toolkit/query'
 import { Roostate } from '../../Store/GlobalStore'
 import { GoalsTypes } from '../../Interface'
 

@@ -1,6 +1,5 @@
-import  {  useContext, useState } from 'react'
+import  {  useContext } from 'react'
 
-import ProjectNote from './ProjectNote';
 import ProjectTime from './ProjectTime';
 import TaskHead from './TaskHead';
 import TitleDeadline from './TitleDeadline';
@@ -18,7 +17,6 @@ const style = {
 }
 
 function ProjectArticle({projectId,title,deadline, createdAt, microTasks, pinned }: ProjectTypes) {
-  const [expand] = useState<boolean>(false)
 
   const {setDeleteDetails, setShowDelete} = useContext(GlobalContext)
   const darkMode = useSelector((state: Roostate) => state.user.darkMode)

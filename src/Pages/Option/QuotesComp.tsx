@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import { QuotesType } from './Option';
 import { Roostate } from '../../Store/GlobalStore';
 import { useSelector } from 'react-redux';

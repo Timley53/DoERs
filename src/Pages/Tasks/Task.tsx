@@ -35,7 +35,7 @@ function Task() {
   const start = (currentPage - 1) * dataPerPage
   const end = currentPage * dataPerPage
 
-  const {showDelete, setShowDelete} = useContext(GlobalContext)
+  const {showDelete} = useContext(GlobalContext)
   const [showFilter, setShowFiltered] = useState<boolean>(false)
   const [showSearch, setShowSearch] = useState<boolean>(false)
   const [showDefault, setShowDefault] = useState<boolean>(true)
@@ -96,10 +96,7 @@ const filterDateFirstDate = (fd: string)=>{
 
     setSearchTasks(filterSearch)
   
-   return ()=>{
-    const filterSearch =  allTasks.filter((tasks: TaskType) => tasks.title.includes(searchValue) )
-
-   }
+  
   }, [searchValue])
 
   function showSearchFxn() {

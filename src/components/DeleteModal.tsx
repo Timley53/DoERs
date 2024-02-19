@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux"
 import { deleteProject, deleteTask } from "../Store/userSlice"
 
 function DeleteModal() {
-    const {showDelete, setShowDelete, deleteDetails, setDeleteDetails} = useContext(GlobalContext)
+    const { setShowDelete, deleteDetails, setDeleteDetails} = useContext(GlobalContext)
 
     const [deleted, setDeleted] = useState<boolean>(false)
 

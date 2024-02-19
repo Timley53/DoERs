@@ -4,13 +4,9 @@ import { Link } from 'react-router-dom'
 import { GoProject } from "react-icons/go";
 import { GrProjects, GrTask } from "react-icons/gr";
 import { SlOptions } from "react-icons/sl";
-import { MdLightMode, MdDarkMode } from "react-icons/md";
 import { RiExpandRightFill } from "react-icons/ri";
 import { NavLinkObjTypeS } from './Interface';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '@reduxjs/toolkit/query';
-import { Roostate } from './Store/GlobalStore';
-import { setDarkMode } from './Store/userSlice';
+
 import { DarkModeBtn } from './components/Buttons';
 
 // const navStyles = {
@@ -49,7 +45,6 @@ const otherLinks = [
 
 function Nav() {
 
-    const [light, setLight] = useState<boolean>(false)
     const [expand, setExpand] = useState<boolean>(false)
     const [, setPath] = useState<string>("dashboard")
 

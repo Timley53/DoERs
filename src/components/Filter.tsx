@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { TaskFilter } from "../AllStyles";
 import { useSelector } from "react-redux";
 import { Roostate } from "../Store/GlobalStore";
@@ -10,7 +9,7 @@ interface Props{
     filterType: boolean
 }
 
-function Filter({filterDate, setFilterDate, filterTasks, filterType}: Props) {
+function Filter({ setFilterDate, filterTasks, filterType}: Props) {
     
     const thisMonth = new Date().getMonth()
     const thisYear = new Date().getFullYear()

@@ -9,27 +9,12 @@ import { createNewTask } from '../../Store/userSlice'
 
 function NewTask() {
   const [title, setTitle] = useState<string >("")
-  const [priority, setPriority] = useState<string | null>("")
-  const [notes, setNotes] = useState<string>("")
-  // const [showNotes, setShowNotes] = useState<boolean>(false)
   const [deadline, setDeadline] = useState<string >("")
   const {setShowModal, setModalDetails} = useContext(GlobalContext)
   const dispatch = useDispatch()
 
 
-  // let current;
 
-  // if(priority === "Normal"){
-  //   current = "600"
-  // } else if(priority === "Midly urgent"){
-  //   current = "600"
-  // } else if(priority === "Urgent"){
-    
-  //   current = "600"
-  // } else{
-    
-  //   current = "300"
-  // }
 
   const creatingNewTask = (e: React.FormEvent ) => {
 

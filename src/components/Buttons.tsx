@@ -32,7 +32,7 @@ export const HomeGoalsBtn = ({setShowGoalsStatus } : HomeGoalsBtnProps) => {
     )
 }
 
-export const GoalBtn = ({id } : GoalBtnProps) => {
+export const GoalBtn = ({ } : GoalBtnProps) => {
 
 
     return (

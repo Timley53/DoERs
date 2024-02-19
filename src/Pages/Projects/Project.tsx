@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react"
 import CreateNewLink from "../../components/CreateNewLink"
-import Filter from "../../components/Filter"
 import Search from "../Home/Search"
 import { useSelector } from "react-redux"
 import { Roostate } from "../../Store/GlobalStore"
@@ -17,9 +16,9 @@ import { TaskStyle } from "../../AllStyles"
 
 function Project() {
 
-  const [filtertByDeadline, setFilterByDeadline] = useState<boolean>(true)
+  const [ ,setFilterByDeadline] = useState<boolean>(true)
   const [searchValue, setSearchValue] = useState<string>("")
-  const {showDelete, setShowDelete} = useContext(GlobalContext)
+  const {showDelete} = useContext(GlobalContext)
   const [showFilter, setShowFiltered] = useState<boolean>(false)
   const [showSearch, setShowSearch] = useState<boolean>(false)
   const [showDefault, setShowDefault] = useState<boolean>(true)
@@ -35,7 +34,6 @@ function Project() {
 
 const [filterDate, setFilterDate] = useState(`${thisYear}-${thisMonth + 1}-01`)
 const [filteredProjects, setFilteredProjects] = useState<ProjectTypes[] | []>([])
-const [showModal , setShowShowModal] = useState<boolean>(false)
 
   console.log(filterDate)
 
@@ -91,10 +89,7 @@ useEffect(() => {
 
 
 
- return ()=>{
-  const filterSearch =  allProjects.filter((Pj: ProjectTypes) => Pj.title.includes(searchValue) )
 
- }
 }, [searchValue])
 
 

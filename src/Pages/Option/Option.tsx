@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import {  useState } from "react"
 import Goals from "./Goals"
 import { GrAdd } from "react-icons/gr"
 import GoalCreateModal from "./GoalCreateModal"

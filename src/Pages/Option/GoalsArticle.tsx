@@ -1,5 +1,3 @@
-import React from 'react'
-import { GoalBtn } from '../../components/Buttons'
 import { MdDelete } from 'react-icons/md'
 import { GoalsTypes } from '../../Interface'
 import { useDispatch, useSelector } from 'react-redux'
