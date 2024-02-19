@@ -9,7 +9,7 @@ interface Prop{
 function TitleDeadline({title , deadline} : Prop) {
 
   console.log(deadline)
-  const daysLeft = differenceInDays(new Date(),  new Date(deadline) ) 
+  const daysLeft = differenceInDays( new Date(deadline), new Date()  ) 
 
 
   

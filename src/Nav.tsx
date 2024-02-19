@@ -7,6 +7,11 @@ import { SlOptions } from "react-icons/sl";
 import { MdLightMode, MdDarkMode } from "react-icons/md";
 import { RiExpandRightFill } from "react-icons/ri";
 import { NavLinkObjTypeS } from './Interface';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@reduxjs/toolkit/query';
+import { Roostate } from './Store/GlobalStore';
+import { setDarkMode } from './Store/userSlice';
+import { DarkModeBtn } from './components/Buttons';
 
 // const navStyles = {
 //     link: ''
@@ -50,36 +55,21 @@ function Nav() {
 
     const route = window.location.pathname.split("/").length - 1
 
-    // function currentPath(cur: string){
-
-    //     if( window.location.pathname.split("/")[route] === cur){
-    //          return "bg-slate-400 text-white" 
-    //         } else{
-    //             return ""
-    //         }
-
-           
-            
-    // }
-    
-
-    
-
-    console.log(window.location.pathname.split("/")[route])
+  
 
   return (
 
     <>
 
-    <nav className='md:hidden sm:flex fixed bottom-0 w-full border-2'>
-        <ul className='flex justify-between w-full px-2 list-none'>
+    <nav className='md:hidden bg-blue-200 sm:flex fixed bottom-0 w-full '>
+        <ul className='flex justify-between w-full px-2 list-none py-1'>
 
         {
             [...mainLinks, ...otherLinks].map((li: NavLinkObjTypeS) => {
                 
                 return(
                     <li className="" key={li.link}>
-                        <Link onClick={()=> setExpand(!expand)}  to={li.link} className={`flex text-center flex-col items-center p-1 px-2  $ ${window.location.pathname.split("/")[route] === li.link ? "bg-slate-400 text-white" : ''}`}>
+                        <Link onClick={()=> setExpand(!expand)}  to={li.link} className={`flex text-center flex-col items-center p-1 px-2  $ ${window.location.pathname.split("/")[route] === li.link ? "bg-white text-blue rounded-lg" : ''}`}>
                             <span className='text-2xl'>{li.icon}</span>
                             <span className='mt-1 text-xs'>{li.text}</span>
                         </Link>
@@ -91,7 +81,7 @@ function Nav() {
         </ul>
     </nav>
 
-    <nav className={`flex sm:hidden md:flex flex-col items-center  ${ expand ? " w-[170px]" : "w-[80px]  "} sticky transition-all duration-1000 h-[100vh] p-1 pt-4 bg-[aliceblue] z-10`}>
+    <nav className={`flex sm:hidden bg-blue-200 md:flex flex-col items-center  ${ expand ? " w-[170px]" : "w-[80px]  "} sticky transition-all duration-1000 h-[100vh] p-1 pt-4 bg z-10`}>
     <Link to={"./"} >
         Doers
     </Link>
@@ -171,13 +161,7 @@ function Nav() {
         }
     </ul>
 
-    <article className='w-[60%] p-1 bg-slate-300 mt-28  flex rounded-xl items-center'>
-        <button className={`w-[50%] transition-all  duration-2000 p-2 px-3 text-center ${light ? "bg-black text-white": "bg-transparent"} rounded-xl `} onClick={()=>setLight(true)}><MdLightMode/></button>
-
-
-        <button className={`w-[50%] transition-all duration-2000 p-2 px-3 text-center ${!light ? "bg-black text-white": "bg-transparent"} rounded-xl `} onClick={()=>setLight(false)}><MdDarkMode/>
-        </button>
-    </article>
+  <DarkModeBtn place='nav'/>
 </nav>
 
 </>

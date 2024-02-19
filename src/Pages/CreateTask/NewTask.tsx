@@ -41,13 +41,12 @@ function NewTask() {
           useLetters: true,
           useNumbers: true,
       })}`,  
-      notes: notes,
       title: title,
-      priority: priority || "normal",
       deadline: deadline,
       createdAt: new Date().toDateString(),
       completed: false,
-      type: "task"
+      type: "task",
+      pinned: false
     }
 
 
@@ -70,28 +69,12 @@ function NewTask() {
 
 
 
-       <article className='text-left w-[90%] max-w-[300px] my-2 '>
-      <label htmlFor="" className=''>Notes</label>
-              <textarea name="" className='max-w-[300px] w-[100%] h-[100px] my-2 rounded-md p-2' value={notes} onChange={(e)=> setNotes(e.target.value)}></textarea>
-    </article>
-
+   
 
 
       <Deadline deadline={deadline} setDeadline={setDeadline}/>
 
-        <article className='w-[80%] p-1 flex justify-between my-2' >
-           <label htmlFor="Normal">
-            <input type="radio" value={"Normal"}  onChange={(e)=> setPriority(e.target.value)} name="priority" id="Normal" /> <span>Normal</span>
-           </label>
-
-           <label htmlFor="Midly urgent">
-            <input type="radio" value={"Midly urgent"}  onChange={(e)=> setPriority(e.target.value)}className='text-yellow-400' name="priority" id="Midly urgent" size={10}/> <span>Midly urgent</span>
-           </label>
-
-           <label htmlFor="Urgent">
-            <input type="radio" value={"Urgent"} onChange={(e)=> setPriority(e.target.value)} name="priority" id="Urgent" /> <span>Urgent</span>
-           </label>
-        </article>
+       
 
     <button className='my-6 p-2 w-[80%] bg-emerald-600 hover:bg-emerald-400 transition-all rounded-sm'>Submit</button>
 

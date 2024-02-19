@@ -1,31 +1,44 @@
 import  { useContext, useState } from 'react'
-import Search from './Search'
-import { HomeGoalsBtn } from '../../components/Buttons'
+import { DarkModeBtn, HomeGoalsBtn } from '../../components/Buttons'
 import HomeGoalsStatus from './HomeGoalsStatus'
 import PinnedTask from './PinnedTask'
 import { GlobalContext } from '../../Utils'
 import ProjectModal from './ProjectModal'
+import CreateNewLink from '../../components/CreateNewLink'
+import DeleteModal from '../../components/DeleteModal'
+import { Roostate } from '../../Store/GlobalStore'
+import { useSelector } from 'react-redux'
+import { homeStyle } from '../../AllStyles'
+
+
+const style = {
+  general: 'w-full p-1 relative flex flex-col items-center',
+  dark: "bg-black text-white",
+  light: "bg-white "
+}
 
 function Home() {
-  const [searchValue, setSearchValue] = useState<string>("")
-  const [showGoalsStatus, setShowGoalsStatus] = useState<boolean>(false)
-  const { HomeProjectModal} = useContext(GlobalContext)
+  const { HomeProjectModal, showDelete} = useContext(GlobalContext)
+  const darkMode = useSelector((state: Roostate) => state.user.darkMode)
+
+const {HomeHeader} = homeStyle
 
   return (
-    <div className='w-full p-1 relative flex flex-col items-center'>
+    <div className={`${style.dark} ${darkMode ? style.dark : style.light}`}>
 
-
+{showDelete && <DeleteModal />}
 {
   HomeProjectModal && <ProjectModal/>
 }
 
-      <header className='w-full flex p-2 items-center justify-between'>
+      <header className={HomeHeader.general + (darkMode ? HomeHeader.dark : HomeHeader.light)}>
         <span className='text-lg'>Welcome</span>
-        <Search searchValue={searchValue} setSearchValue={setSearchValue}/>
-        <HomeGoalsBtn  showGoalsStatus={showGoalsStatus} setShowGoalsStatus={setShowGoalsStatus}/>
+
+
+        <CreateNewLink dynaLink={"createtask"}/>
+        <DarkModeBtn place='homeHeader'/>
       </header>
 
-      {showGoalsStatus && <HomeGoalsStatus showGoalsStatus={showGoalsStatus} setShowGoalsStatus={setShowGoalsStatus}/>}
 
       <PinnedTask/>
 

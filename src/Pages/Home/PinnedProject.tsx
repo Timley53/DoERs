@@ -4,6 +4,7 @@ import Pagination from '../../components/Pagination';
 import {useSelector} from 'react-redux';
 import {Roostate} from '../../Store/GlobalStore';
 import {ProjectTypes} from '../../Interface';
+import { homeStyle } from '../../AllStyles';
 
 
 interface Props{
@@ -16,8 +17,10 @@ interface Props{
 }
 
 function PinnedProject({start, end, pages, currentPage, setCurrentPage} : Props) {
-  const projects = useSelector((state: Roostate) => state.user.Projects)
+  const projects = useSelector((state: Roostate) => state.user.Projects.filter((pj) => pj.pinned === true)) 
+   const darkMode = useSelector((state: Roostate) => state.user.darkMode)
 
+  const {pinnedContainer} = homeStyle
 
 
 
@@ -26,7 +29,7 @@ function PinnedProject({start, end, pages, currentPage, setCurrentPage} : Props)
 
     <div className=' w-full  flex flex-wrap mt-2 items-center  h-full '>
       { 
-  projects.length < 1 && <div className='w-full h-[350px]  flex items-center justify-center'>
+  projects.length < 1 && <div className={pinnedContainer.general + (darkMode ? pinnedContainer.dark : pinnedContainer.light)}>
     No Pinned Projects
   </div> ||
       projects.length > 0 && projects?.slice(start, end).map((Proj: ProjectTypes) =>  (<ProjectArticle key={Proj.projectId} {...Proj}/>) ) 

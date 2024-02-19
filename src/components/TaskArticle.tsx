@@ -2,21 +2,40 @@ import TaskHead from './TaskHead'
 import ProjectTime from './ProjectTime'
 import { TaskType } from '../Interface'
 import { differenceInDays } from 'date-fns'
+import { useContext,  } from 'react'
+import { GlobalContext } from '../Utils'
+import { Roostate } from '../Store/GlobalStore'
+import { useSelector } from 'react-redux'
+import { TaskArticleStyle } from '../AllStyles'
 
-function TaskArticle({ title ,deadline,createdAt,  }: TaskType) {
+function TaskArticle({ title ,deadline,createdAt,  taskId,pinned }: TaskType) {
+
+  const {setDeleteDetails, setShowDelete} = useContext(GlobalContext)
+  const darkMode = useSelector((state: Roostate) => state.user.darkMode)
+
+
 
   const daysLeft = differenceInDays(new Date(),  new Date(deadline) ) 
 
+  const deleteTask = () => {
+    setDeleteDetails({
+      type: "task",
+      id: taskId,
+      title: title
+    })
+    setShowDelete(true)
+  }
+
 
   return (
-    <div className='w-[280px] p-2 min-h-[240px] rounded-lg col-span-1 border-2 border-blue-300 m-1 bg-blue-200'>
+    <div className={TaskArticleStyle.general + (darkMode ?  TaskArticleStyle.dark : TaskArticleStyle.light )}>
 
-        <TaskHead type={"task"}/>
+        <TaskHead type={"task"} deleteTask={deleteTask} id={taskId} pinned={pinned}/>
 
         <div className="w-full  mt-4 px-2">
-            <div className='text-base break-words'>{title}</div>
+            <div className='text-[14px] break-words'>{title}</div>
             <div className='p-1 inline-block px-2 bg-rose-500 rounded-full text-white text-xs my-3'> 
-            {daysLeft} days left
+            {Math.abs(daysLeft)} days left
             </div>
 
 
@@ -35,4 +54,4 @@ function TaskArticle({ title ,deadline,createdAt,  }: TaskType) {
   )
 }
 
-export default TaskArticle
+export default TaskArticle 

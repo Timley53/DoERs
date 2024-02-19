@@ -10,7 +10,11 @@ export interface GlobalContextType{
      setProjectModalDetails: React.Dispatch<React.SetStateAction<ProjectTypes | null>>;
      projectModalId: string, 
      setProjectModalId:  React.Dispatch<React.SetStateAction<string>>;
-
+    showDelete: boolean,
+    setShowDelete: React.Dispatch<React.SetStateAction<boolean>>;
+    deleteDetails: null | DeleteDetailsType
+    
+    , setDeleteDetails: React.Dispatch<React.SetStateAction<DeleteDetailsType | null>>;
 }
 
 
@@ -48,31 +52,41 @@ export interface ProjectTypes{
     note: string;
     microTasks: microTasks[];
     pinned: boolean;
-    type: string
-
+    type: string,
 }
 
 export interface TaskType{
     taskId: string,
     title: string,
     completed: boolean;
-    notes: string;
     deadline: string;
     createdAt: string;
-    priority: string
     type: string
-}
-export interface GoalsTypes {
-
+    pinned: boolean
 }
 
 
 export interface userInitialStateTypes{
     allTasks: TaskType[] | [];
     Projects: ProjectTypes[] | [];
-    goals: []
+    goals: GoalsTypes[],
+    darkMode: boolean;
 }
 export interface CreateModalType {
   message: string
 
 }
+
+export interface DeleteDetailsType {
+    type: "task" | "project",
+    id: string,
+    title: string
+}
+
+export interface GoalsTypes {
+    text: string,
+    date: string;
+    completed: boolean;
+    goalId: string;
+}
+

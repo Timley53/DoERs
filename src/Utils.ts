@@ -13,4 +13,10 @@ export const GlobalContext = createContext<GlobalContextType>({
     setProjectModalDetails: ()=> {},
     setProjectModalId: ()=> {},
     projectModalId: "",
+    showDelete: false,
+    setShowDelete: ()=>{},
+    deleteDetails: null,
+    
+    setDeleteDetails: ()=> {}
+    
 })

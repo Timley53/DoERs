@@ -11,21 +11,30 @@ import { useSelector } from 'react-redux'
 import { Roostate } from '../../Store/GlobalStore'
 
 function ProjectModal() {
-    const { setHomeProjectModal, projectModalId} = useContext(GlobalContext)
+    const { setHomeProjectModal, projectModalId, setDeleteDetails, setShowDelete} = useContext(GlobalContext)
     const modalDetails = useSelector((state:Roostate) =>state.user.Projects.find(pj => pj.projectId === projectModalId))
 
     console.log(modalDetails)
 
+    const deleteTask = () => {
+      setDeleteDetails({
+        type: "project",
+        id: projectModalId,
+        title: `${modalDetails?.title}`
+      })
+      setShowDelete(true)
+      setHomeProjectModal(false)
+    }
+  
    
      
   return (
-    <div className='h-screen w-screen z-50 bg-black bg-opacity-90 flex fixed items-center justify-center top-0 left-0'>
+    <div className='h-screen w-screen z-20 bg-black bg-opacity-90 flex fixed items-center justify-center top-0 left-0'>
 
-<div className={` w-[50%] max-w-[450px] h-[88%] border-2 m-1 rounded-2xl p-2 bg-slate-300 transition-all duration-700 flex flex-col`}  >
+<div className={` md:w-[50%] sm:w-[90%] text-black max-w-[450px] min-h-[90%] border-2 m-1 rounded-2xl p-2 bg-slate-300 transition-all duration-700 flex flex-col`}  >
         <div className="w-full flex items-center">
 
-
-     <TaskHead type={"project"}/>
+     <TaskHead deleteTask={deleteTask} type={"project"} id={projectModalId} pinned={modalDetails?.pinned || false}/>
         <button onClick={()=>setHomeProjectModal(false)} className=' p-1 text-rose-400 hover:text-rose-800 transition-all mx-1'><ImCross/></button>
 
         </div>
@@ -44,7 +53,7 @@ function ProjectModal() {
         </div>
 
 
-          <div className="min-h-[240px] items-start justify-start flex flex-col p-1 overflow-y-scroll   rounded-md  microTasks">
+          <div className="min-h-[230px] items-start justify-start flex flex-col p-1 overflow-y-scroll   rounded-md  microTasks">
               {
                 modalDetails?.microTasks.map((micro: microTasks) => {
 
@@ -58,12 +67,23 @@ function ProjectModal() {
 
       <ProjectTime deadline={modalDetails ? modalDetails.deadline: "no deadline" } createdAt={modalDetails ? modalDetails.createdAt: "none"} />
 
-  <ProjectNote/>
+      <span className="w-[80%] text-[13px] break-words">
+       Notes: {modalDetails?.note}
+      </span>
 
+  <ProjectNote id={modalDetails?.projectId || ""} notes={modalDetails?.note || ""}/>
+
+
+  
        
 
 
       </div>
+
+      {
+    (modalDetails?.microTasks.every((mT) => mT.completed === true)) && <button className='mx-auto p-2 my-5 bg-emerald-600 rounded-md text-sm text-white'>All task Completed</button>
+  }
+
         
     </div>
 

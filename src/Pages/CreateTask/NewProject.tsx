@@ -6,15 +6,19 @@ import NewMicroTasks from '../../components/NewMicroTasks'
 import { GrAdd } from 'react-icons/gr'
 import NewNotes from '../../components/NewNotes'
 import { GlobalContext } from '../../Utils'
-import { useDispatch } from 'react-redux'
-import { AppsDispatch } from '../../Store/GlobalStore'
+import { useDispatch, useSelector } from 'react-redux'
+import { AppsDispatch, Roostate } from '../../Store/GlobalStore'
 import { createNewProject } from '../../Store/userSlice'
 import Deadline from './Deadline'
+import { createTaskStyle } from '../../AllStyles'
 
 
 function NewProject() {
     const {setShowModal, setModalDetails} = useContext(GlobalContext)
     const dispatch = useDispatch()
+
+    const darkMode = useSelector((state: Roostate) => state.user.darkMode)
+
 
     const defaultMicroTask = [
         {
@@ -90,10 +94,11 @@ function NewProject() {
 
          clearForm()
     }
-    // const 
+
+    const {newProject} = createTaskStyle
 
   return (
-    <form onSubmit={newProjectSubmit} className='w-[80%] max-w-[450px] rounded-md flex flex-col h-full bg-slate-300 p-2 pb-6 items-center pt-4 transition duration-700 mb-7'>
+    <form onSubmit={newProjectSubmit} className={newProject.general + (darkMode ? newProject.dark : newProject.light)}>
        
         
         <h2 className='text-center mb-4'>New project</h2>

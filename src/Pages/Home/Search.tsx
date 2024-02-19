@@ -1,22 +1,30 @@
 import React from 'react'
+import { inputstyle } from '../../AllStyles';
+import { useSelector } from 'react-redux';
+import { Roostate } from '../../Store/GlobalStore';
 
 
 interface props {
     searchValue: string;
     setSearchValue: React.Dispatch<React.SetStateAction<string>>;
+    showSearchFxn: () => void
 }
 
-function Search({searchValue, setSearchValue}: props) {
+function Search({searchValue, setSearchValue, showSearchFxn}: props) {
+  const darkMode = useSelector((state: Roostate) => state.user.darkMode)
+
+
+
   return (
-    <div className='w-[40%] md:min-w-[300px]  mx-5 flex'>
-        <input type="text" placeholder='input task title' value={searchValue} onChange={(e)=> {
-            
+    <div className={`md:w-[40%] md:min-w-[300px] sm:w-full  mx-3  flex`}>
+        <input type="text" placeholder='input task title' value={searchValue} onChange={(e)=> {    
             setSearchValue(e.target.value)
-        
         }} 
-        className='bg-slate-200 p-2 px-3 text-sm rounded-lg w-full focus-within:outline-none'/>
-        {/* <button className=''><ImSearch/></button> */}
-        {/* <button className=''><RxCross2/></button> */}
+        onFocus={()=>{
+          showSearchFxn()
+
+        }}
+        className={` p-[12px] px-3  bg-borderColor rounded-lg w-full ${inputstyle.general} ${darkMode ? inputstyle.dark : inputstyle.light} `}/>
     </div>
   )
 }
