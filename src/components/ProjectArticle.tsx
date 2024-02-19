@@ -11,8 +11,8 @@ import { Roostate } from '../Store/GlobalStore';
 
 const style = {
   general: "md:w-[280px] sm:w-[95%] min-h-[200px]  max-h-[300]  border-2 m-1 rounded-2xl p-2 bg-slate-300 transition-all duration-700 flex flex-col",
-  dark: "bg-transparent border-2 border-dashed border-purple-400",
-  light: "bg-slate-100"
+  dark: "bg-transparent border-2 border-dashed border-purple-400 text-white",
+  light: "bg-slate-100 text-black"
 
 }
 
@@ -21,9 +21,7 @@ function ProjectArticle({projectId,title,deadline, createdAt, microTasks, pinned
   const {setDeleteDetails, setShowDelete} = useContext(GlobalContext)
   const darkMode = useSelector((state: Roostate) => state.user.darkMode)
 
-  // const props = {
-  //   projectId,title, note,deadline, createdAt,status, microTasks, onhold, pinned
-  // }
+  
   const deleteTask = () => {
     setDeleteDetails({
       type: "project",

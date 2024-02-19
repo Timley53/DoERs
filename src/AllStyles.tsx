@@ -61,5 +61,11 @@ export const createTaskStyle = {
         general: "w-[80%] max-w-[450px] rounded-md flex flex-col h-full p-2  pb-6 items-center pt-4 transition duration-700 mb-7 ",
         dark: "bg-slate-800 ",
         light: "bg-slate-300 "
+    },
+
+    deadline:{
+        general: "my-1 w-[100%] p-1 bg-slate-400 rounded-sm text-sm ",
+        dark: " text-white ",
+        light: "text-black "
     }
 }

@@ -7,7 +7,6 @@
 :root{
     
   zoom: 0;
-  user-zoom: 0;
 }
 body{
   color: black;
@@ -16,7 +15,6 @@ body{
   padding: 0;
   background-color: white;
   zoom: 0;
-  user-zoom: 0;
 }
 
 
@@ -26,8 +24,9 @@ body{
 }
 
 input{
-  color: black;
-  background-color: beige;
+  color: white;
+  /* background-color: beige; */
+  zoom: 0;
 }
 
 .PinnedContainer{

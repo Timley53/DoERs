@@ -9,6 +9,8 @@ import { NavLinkObjTypeS } from './Interface';
 
 import { DarkModeBtn } from './components/Buttons';
 
+import doersImg from "./assets/doers-high-resolution-logo-transparent.png"
+
 // const navStyles = {
 //     link: ''
 // }
@@ -78,7 +80,7 @@ function Nav() {
 
     <nav className={`flex sm:hidden bg-blue-200 md:flex flex-col items-center  ${ expand ? " w-[170px]" : "w-[80px]  "} sticky transition-all duration-1000 h-[100vh] p-1 pt-4 bg z-10`}>
     <Link to={"./"} >
-        Doers
+        <img src={doersImg} alt="" className='w-[80%] m-auto' />
     </Link>
 
 
